@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBMVCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="_User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar(max)" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar(max)" Nullable="false" />
+          <Property Name="EDAD" Type="int" Nullable="false" />
+          <Property Name="_STATUS" Type="int" />
+        </EntityType>
+        <EntityType Name="mSTATUS">
+          <Key>
+            <PropertyRef Name="IDSTATUS" />
+          </Key>
+          <Property Name="IDSTATUS" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="_STATUS" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK___User___STATUS__3B75D760">
+          <End Role="mSTATUS" Type="Self.mSTATUS" Multiplicity="0..1" />
+          <End Role="_User" Type="Self._User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mSTATUS">
+              <PropertyRef Name="IDSTATUS" />
+            </Principal>
+            <Dependent Role="_User">
+              <PropertyRef Name="_STATUS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBMVCModelStoreContainer">
+          <EntitySet Name="_User" EntityType="Self._User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mSTATUS" EntityType="Self.mSTATUS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK___User___STATUS__3B75D760" Association="Self.FK___User___STATUS__3B75D760">
+            <End Role="mSTATUS" EntitySet="mSTATUS" />
+            <End Role="_User" EntitySet="_User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBMVCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C_User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EDAD" Type="Int32" Nullable="false" />
+          <Property Name="C_STATUS" Type="Int32" />
+          <NavigationProperty Name="mSTATUS" Relationship="Self.FK___User___STATUS__3B75D760" FromRole="C_User" ToRole="mSTATUS" />
+        </EntityType>
+        <EntityType Name="mSTATUS">
+          <Key>
+            <PropertyRef Name="IDSTATUS" />
+          </Key>
+          <Property Name="IDSTATUS" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="C_STATUS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="C_User" Relationship="Self.FK___User___STATUS__3B75D760" FromRole="mSTATUS" ToRole="C_User" />
+        </EntityType>
+        <Association Name="FK___User___STATUS__3B75D760">
+          <End Role="mSTATUS" Type="Self.mSTATUS" Multiplicity="0..1" />
+          <End Role="C_User" Type="Self.C_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mSTATUS">
+              <PropertyRef Name="IDSTATUS" />
+            </Principal>
+            <Dependent Role="C_User">
+              <PropertyRef Name="C_STATUS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBMVCEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C_User" EntityType="Self.C_User" />
+          <EntitySet Name="mSTATUS" EntityType="Self.mSTATUS" />
+          <AssociationSet Name="FK___User___STATUS__3B75D760" Association="Self.FK___User___STATUS__3B75D760">
+            <End Role="mSTATUS" EntitySet="mSTATUS" />
+            <End Role="C_User" EntitySet="C_User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBMVCModelStoreContainer" CdmEntityContainer="DBMVCEntities">
+          <EntitySetMapping Name="C_User">
+            <EntityTypeMapping TypeName="DBMVCModel.C_User">
+              <MappingFragment StoreEntitySet="_User">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="EDAD" ColumnName="EDAD" />
+                <ScalarProperty Name="C_STATUS" ColumnName="_STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mSTATUS">
+            <EntityTypeMapping TypeName="DBMVCModel.mSTATUS">
+              <MappingFragment StoreEntitySet="mSTATUS">
+                <ScalarProperty Name="IDSTATUS" ColumnName="IDSTATUS" />
+                <ScalarProperty Name="C_STATUS" ColumnName="_STATUS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
