@@ -33,7 +33,7 @@ namespace PSS_08_1.Controllers
                         ).ToList();
             }
 
-            return View();
+            return View(list);
         }
     }
 }
