@@ -33,3 +33,24 @@ VALUES ('ACTIVO'),
        ('ELIMINADO');
 
 	   SELECT * FROM mSTATUS
+
+
+CREATE TABLE [dbo].[PRODUCTOS](
+	[Item] [nvarchar](10) NULL,
+	[Descripcion] [nvarchar](80) NULL,
+	[CantidadEnExistencia] [int] NULL,
+	[Costo] [float] NULL,
+	[PrecioDeVenta] [float] NULL,
+	[Impuesto] [float] NULL,
+	[EstatusProducto] [int] NULL,
+	[BarCode] [nvarchar](50) NULL,
+	[Imagen] [image] NULL,
+	[Ruta] [text] NULL,
+	[TieneImpuesto] [int] NULL
+)
+
+CREATE TABLE [dbo].[SECUENCIA](
+	[ID] [int] NULL,
+	[DESCRIPCION] [nvarchar](50) NULL,
+	[SECUENCIA] [float] NULL
+)
