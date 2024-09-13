@@ -28,7 +28,7 @@ namespace PSS_08_1.Controllers
                 if (read == null) {
                     return Content("A Ocurrido un Error :( ");
                 }
-
+                Session["Usuario"] = read;
                 return Content("1");
 
             }    

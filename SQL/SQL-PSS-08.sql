@@ -54,3 +54,6 @@ CREATE TABLE [dbo].[SECUENCIA](
 	[DESCRIPCION] [nvarchar](50) NULL,
 	[SECUENCIA] [float] NULL
 )
+
+
+select * from _User

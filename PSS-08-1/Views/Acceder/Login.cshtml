@@ -5,40 +5,6 @@
 
 }
 
-@*<div>
-        <form id="frmAcceder">
-            <div>
-                <br />
-                <br />
-
-                <div>
-                    Correo del Usuario
-                    <input type="text"
-                           name="Usuario"
-                           value=""
-                           id="Usuario"
-                           class="form-control" />
-                </div>
-                <br />
-                <div>
-                    Contraseña del Usuario
-                    <input type="password"
-                           name="Password"
-                           value=""
-                           id="Password"
-                           class="form-control" />
-                </div>
-                <br />
-                <div>
-                    <input type="submit"
-                           name="name"
-                           class="btn btn-success btn-lg"
-                           value="Entrar" />
-                </div>
-            </div>
-        </form>
-    </div>*@
-
 <div class="col-md-12">
     <input type="button" class="btn btn-primary btn-lg"
            onclick="document.location.href = '@Url.Content("~/")'"
@@ -123,6 +89,7 @@
                     const parametros = $(this).serialize();
                     $.post(url, parametros, function (data) {
                         if (data == "1") {
+                            alert(data);
                             document.loc.href = "@Url.Content("~/")";
                             return;
                         } else {
