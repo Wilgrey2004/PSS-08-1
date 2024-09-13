@@ -25,16 +25,15 @@ namespace PSS_08_1.Controllers
                                     && sf.PASSWORD == password 
                                     && sf.C_STATUS == 1
                                     );
+                
                 if (read == null) {
                     return Content("A Ocurrido un Error :( ");
                 }
 
+                Session["Usuario"] = read;
                 return Content("1");
-
             }    
             
         }
-
-
     }
 }

@@ -8,6 +8,7 @@ namespace PSS_08_1
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new Filters.VerificaSeccion());
         }
     }
 }
