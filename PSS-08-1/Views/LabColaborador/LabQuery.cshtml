@@ -1,0 +1,51 @@
+﻿@model List<PSS_08_1.Models.ViwModel.LabColaboradorQueryViwModels>
+@{
+ ViewBag.Title = "LabQuery";
+ Layout = "~/Views/Shared/_LayoutApp.cshtml";
+}
+
+<div class="flex h-screen w-screen flex-col items-center justify-center">
+ <table>
+  <thead class="">
+  <th class="border border-gray-700 bg-blue-200 px-4 py-2 text-center font-bold">ID Colaborador</th>
+  <th class="border border-gray-700 bg-blue-200 px-4 py-2 text-center font-bold">Nombre Colaborador</th>
+  <th class="border border-gray-700 bg-blue-200 px-4 py-2 text-center font-bold">Departamento</th>
+  <th class="border border-gray-700 bg-blue-200 px-4 py-2 text-center font-bold">Registro Colaborador</th>
+  <th class="border border-gray-700 bg-blue-200 px-4 py-2 text-center font-bold">Acciones</th>
+  </thead>
+  <tbody>
+   @foreach (var item in Model)
+   {
+	<tr class="font-bold text-black">
+	 <td class="border border-gray-700 bg-blue-100 px-4 py-2 text-center">@item.LabColaborador_ID</td>
+	 <td class="border border-gray-700 bg-blue-100 px-4 py-2 text-center">@item.Nombre_Colaborador</td>
+	 <td class="border border-gray-700 bg-blue-100 px-4 py-2 text-center">@item.Departamento_Colaborador</td>
+	 <td class="border border-gray-700 bg-blue-100 px-4 py-2 text-center">@item.Registrado_Colaborador</td>
+	 <td class="border border-gray-700 bg-blue-100 px-4 py-2 text-center">
+	  <div class="flex flex-row gap-4">
+	   
+		<button class="border-2 transformm rounded-lg border-red-400 bg-red-500 p-1.5 font-bold duration-75 hover:-translate-y-1 hover:shadow hover:text-white hover:drop-shadow-lg"
+			onclick="jsDelete(@item.LabColaborador_ID);">
+		Borrrar
+	    </button>
+
+
+	    <button class="border-2 transformm rounded-lg border-blue-400 bg-blue-500 p-1.5 font-bold duration-75 hover:-translate-y-1 hover:shadow hover:text-white hover:drop-shadow-lg"
+			onclick="jsUpdate(@item.LabColaborador_ID);">
+		Actualizar
+	   </button>
+	  
+	  </div>
+	 </td>
+	</tr>
+   }
+  </tbody>
+ </table>
+</div>
+
+
+@section script{
+  <script>
+   
+  </script>
+ }

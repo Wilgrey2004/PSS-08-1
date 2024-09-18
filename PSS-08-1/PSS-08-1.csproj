@@ -131,12 +131,16 @@
     <Compile Include="Controllers\AccederController.cs" />
     <Compile Include="Controllers\CerrarSeccionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LabColaboradorController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\VerificaSeccion.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\C_User.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LABCOLABORADORES.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Model1.Context.cs">
@@ -157,6 +161,7 @@
     <Compile Include="Models\mSTATUS.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViwModel\LabColaboradorViwModels.cs" />
     <Compile Include="Models\ViwModel\UserViwModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -231,6 +236,8 @@
     <Content Include="Views\User\Query.cshtml" />
     <Content Include="Views\Shared\_LayoutApp.cshtml" />
     <Content Include="Views\Acceder\Login.cshtml" />
+    <Content Include="Views\User\Add.cshtml" />
+    <Content Include="Views\LabColaborador\LabQuery.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

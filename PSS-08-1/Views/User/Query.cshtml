@@ -17,14 +17,16 @@
     <h2>Consulta Usuarios!!</h2>
     <div class="row">
         <br />
-        <div class="col-md-12">
+        <div class="flex flex-row gap-4">
             <input type="button" class="btn btn-primary btn-lg"
-                   onclick="document.location.href = '@Url.Content("~/")'"
-                   value="Volver Atras" />
+                onclick="document.location.href = '@Url.Content("~/")'"
+                value="Volver Atras" />
+
+			<input type="button" name="Guardar" value="Agregar Nuevo Registro" class="border-2 cursor-pointer rounded-lg border-black bg-gradient-to-r from-green-600 to-green-800 p-2 font-bold text-white transition duration-75 hover:bg-gradient-to-r hover:from-green-800 hover:to-green-600 hover:transition hover:duration-75 hover:-translate-y-1 hover:shadow-md hover:shadow-blue-950" onclick="document.location.href='@Url.Content("~/User/Add")'" />
         </div>
         <br />
         <br />
-
+         
         <div class="col-lg-12">
             <table class="table-bordered table">
                 <tr>
@@ -53,7 +55,6 @@
             </table>
         </div>
     </div>
-
 </body>
 </html>
 

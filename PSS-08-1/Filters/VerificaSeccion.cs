@@ -10,29 +10,6 @@ namespace PSS_08_1.Filters
 {
     public class VerificaSeccion : ActionFilterAttribute
     {
-        //public override void OnActionExecuting(ActionExecutingContext filterContext)
-        //{
-        //    var miUsuario = (C_User)HttpContext.Current.Session["Usuario"];
-
-        //    if (miUsuario == null)
-        //    {
-        //        if (filterContext.Controller is AccederController == false)
-        //        {
-        //            filterContext.HttpContext.Response.Redirect("~/Acceder/Login");
-        //        }
-        //    }
-        //    else
-        //    {
-        //        if (filterContext.Controller is AccederController == true)
-        //        {
-        //            filterContext.HttpContext.Response.Redirect("~/Home/Index");
-        //        }
-        //    }
-
-
-        //    base.OnActionExecuting(filterContext);
-        //}
-
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             var miUsuario = (C_User)HttpContext.Current.Session["Usuario"];
