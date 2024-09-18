@@ -37,6 +37,8 @@ namespace PSS_08_1.Models.ViwModel
         [Required]
         [Display(Name = "Edad")]
         public int _Edad { get; set; }
+
+		//Hola
     }
 
 }
