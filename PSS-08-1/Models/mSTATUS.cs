@@ -18,6 +18,7 @@ namespace PSS_08_1.Models
         public mSTATUS()
         {
             this.C_User = new HashSet<C_User>();
+            this.LABCOLABORADORES = new HashSet<LABCOLABORADORES>();
         }
     
         public int IDSTATUS { get; set; }
@@ -25,5 +26,7 @@ namespace PSS_08_1.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<C_User> C_User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LABCOLABORADORES> LABCOLABORADORES { get; set; }
     }
 }

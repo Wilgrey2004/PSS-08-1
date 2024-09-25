@@ -5,9 +5,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="ca794e6067994a549bfb4c0129f48470" Name="Diagram1">
-        <EntityTypeShape EntityType="DBMVCModel.C_User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBMVCModel.mSTATUS" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBMVCModel.C_User" Width="1.5" PointX="1.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBMVCModel.mSTATUS" Width="1.5" PointX="5.125" PointY="1.625" IsExpanded="true" />
         <AssociationConnector Association="DBMVCModel.FK___User___STATUS__3B75D760" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DBMVCModel.LABCOLABORADORES" Width="1.5" PointX="8.375" PointY="1.25" />
+        <AssociationConnector Association="DBMVCModel.FK__LABCOLABO__ESTAT__5DCAEF64" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

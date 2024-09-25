@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/shared/_LayoutApp.cshtml";
+
+}
+
+<main class="m-auto mb-10 mt-10 flex h-screen w-screen flex-col items-center justify-center sm:flex sm:flex-row">
+    <section class="border-2 relative flex h-2/4 flex-col items-center justify-center gap-3 rounded-t-lg border-blue-600 bg-gradient-to-b from-blue-500 to-blue-800 p-4 shadow-md shadow-gray-500 transition duration-75 hover:transition hover:duration-75 sm:rounded-l-lg sm:rounded-t-none"
+             id="seccion1">
+        <article>
+            <img src="~/Imagenes/casa.png"
+                 alt=""
+                 class="absolute left-3 top-3 h-10 w-8 sm:w-16 sm:h-16 sm:top-5 sm:left-5" />
+        </article>
+
+        <article class="text-center text-xs text-white sm:text-lg">
+            Bienvenido a La mejor Aplicacion de notas Web
+        </article>
+
+        <article class="mt-10">
+            <img src="~/Imagenes/on.png"
+                 alt="Imagen de una casa"
+                 class="h-24 w-24 sm:w-32 sm:h-36" />
+        </article>
+        <article class="absolute bottom-4 text-lg text-white">
+            <h2>.....</h2>
+        </article>
+    </section>
+
+    <section class="border-2 relative flex h-2/4 flex-col items-center justify-center gap-3 rounded-b-lg border-blue-400 bg-gradient-to-t from-white to-blue-600 p-4 shadow-md shadow-gray-500 transition duration-75 hover:transition hover:duration-75 sm:rounded-r-lg sm:rounded-b-none sm:w-1/2"
+             id="seccion2">
+        <article class="absolute right-2 top-2 flex flex-row text-center text-xs">
+            <button class="border-2 rounded-l-lg border-gray-500 bg-gray-300 p-2 text-black">
+                1
+            </button>
+            <button class="border-2 rounded-r-lg border-gray-500 bg-gray-300 p-2 text-black">
+                2
+            </button>
+        </article>
+
+        <form id="frmAcceder"
+              class="absolute left-10 flex w-full flex-col gap-10">
+            <h2 class="font-sans text-4xl font-extralight text-white">
+                Iniciar Seccion
+            </h2>
+            <div>
+                <input placeholder=" Correo del Usuario"
+                       type="text"
+                       name="Usuario"
+                       value=""
+                       id="Usuario"
+                       class="border-b-2 w-1/2 rounded-sm border-black bg-transparent p-2 text-left font-bold text-white outline-none placeholder:text-black" />
+            </div>
+
+            <div>
+                <input placeholder="Contraseña del Usuario"
+                       type="password"
+                       name="Password"
+                       value=""
+                       id="Password"
+                       class="border-b-2 w-1/2 rounded-sm border-black bg-transparent p-2 text-left font-bold text-white outline-none placeholder:text-black" />
+            </div>
+
+            <div>
+                <input type="submit"
+                       name="name"
+                       class="border-2 w-1/2 cursor-pointer rounded-lg border-black bg-gradient-to-r from-blue-400 to-blue-800 p-4 font-bold text-white transition duration-75 hover:bg-gradient-to-r hover:from-blue-800 hover:to-blue-400 hover:transition hover:duration-75 hover:-translate-y-1 hover:shadow-md hover:shadow-blue-950"
+                       value="Entrar" />
+            </div>
+        </form>
+    </section>
+</main>
+
+@section script {
+    <script>
+        $(document).ready(function () {
+
+            $("#frmAcceder").submit(function (e) {
+                    e.preventDefault();
+                        url = "@Url.Content("~/Acceder/Enter")";
+                        parametros = $(this).serialize();
+                    $.post(url, parametros, function (data) {
+                        if (data == "1") {
+                           
+                            document.location.href = "@Url.Content("~/")";
+                            return;
+                        } else {
+                            alert(data);
+                        }
+                    });
+                });
+            });
+    </script>
+}

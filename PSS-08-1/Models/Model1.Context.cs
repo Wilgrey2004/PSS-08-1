@@ -27,5 +27,6 @@ namespace PSS_08_1.Models
     
         public virtual DbSet<C_User> C_User { get; set; }
         public virtual DbSet<mSTATUS> mSTATUS { get; set; }
+        public virtual DbSet<LABCOLABORADORES> LABCOLABORADORES { get; set; }
     }
 }
