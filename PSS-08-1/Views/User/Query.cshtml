@@ -1,61 +1,93 @@
 ﻿@model List<PSS_08_1.Models.ViwModel.QueryViwModels>
 
 @{
-    ViewBag.Title = "Consulta";
-    Layout = "~/views/shared/_LayoutApp.cshtml";
+ ViewBag.Title = "Consulta";
+ Layout = "~/views/shared/_LayoutApp.cshtml";
 }
-    
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Consulta De usuarios</title>
+ <script src="https://cdn.tailwindcss.com"></script>
+ <title>Consulta De usuarios</title>
 </head>
-<body>
+<body class="bg-gray-200">
+ <div class="">
+  <br />
+  <div class="flex h-screen w-screen flex-col items-center justify-center">
+   <div class="flex flex-row gap-4">
+	<input type="button" class="btn btn-primary btn-lg"
+		   onclick="document.location.href = '@Url.Content("~/")'"
+		   value="Volver Atras" />
 
-   
+	<input type="button" name="Guardar" value="Agregar Nuevo Registro" class="border-2 cursor-pointer rounded-lg border-black bg-gradient-to-r from-green-600 to-green-800 p-2 font-bold text-white transition duration-75 hover:bg-gradient-to-r hover:from-green-800 hover:to-green-600 hover:transition hover:duration-75 hover:-translate-y-1 hover:shadow-md hover:shadow-blue-950" onclick="document.location.href='@Url.Content("~/User/Add")'" />
+   </div>
+   <table class="">
+	<tr>
+	 <th class="border border-gray-700 bg-blue-200 px-4 py-2 text-center font-bold" ">ID</th>
+	 <th class="border border-gray-700 bg-blue-200 px-4 py-2 text-center font-bold">Correo</th>
+	 <th class="border border-gray-700 bg-blue-200 px-4 py-2 text-center font-bold">Edad</th>
+	 <th class="border border-gray-700 bg-blue-200 px-4 py-2 text-center font-bold">Accion</th>
+	</tr>
+	@foreach (var Objs in Model)
+	{
+	 <tr>
+	  <td class="border border-gray-700 bg-blue-100 px-4 py-2 text-center">@Objs._Id</td>
+	  <td class="border border-gray-700 bg-blue-100 px-4 py-2 text-center">@Objs._Email</td>
+	  <td class="border border-gray-700 bg-blue-100 px-4 py-2 text-center">@Objs._Edad</td>
+	  <td class="border border-gray-700 bg-blue-100 px-4 py-2 text-center">
+	   
+	  <input type="button" 
+			 class="border-2 transformm rounded-lg border-red-400 bg-red-500 p-1.5 font-bold duration-75 hover:-translate-y-1 hover:shadow hover:text-white hover:drop-shadow-lg"
+		   onclick="jsDelete(@Objs._Id);"
+		   value="Borrar" />
+	   
+	  <input type="button" 
+			  class="border-2 transformm rounded-lg border-blue-400 bg-blue-500 p-1.5 font-bold duration-75 hover:-translate-y-1 hover:shadow hover:text-white hover:drop-shadow-lg"
+			 onclick="document.location.href = '@Url.Content("~/User/Edit/" + Objs._Id)'"
+		   value="Editar" />
+	  </td>
+	 </tr>
+	}
+   </table>
+  </div>
+ </div>
 
-    <h2>Consulta Usuarios!!</h2>
-    <div class="row">
-        <br />
-        <div class="flex flex-row gap-4">
-            <input type="button" class="btn btn-primary btn-lg"
-                onclick="document.location.href = '@Url.Content("~/")'"
-                value="Volver Atras" />
+ @*@section script{
+   <script>
+	const jsDelete = (id) => {
+		 if (confi("Estas Seguro De borrar ??")) {
+		  url = "@Url.Content("~/User/Delete")" + "/" + ID;
+		  $.post(url, function (data) {
+		   if (data == "1") {
+			document.location.href = "@Url.Content("~/User/Query")"
 
-			<input type="button" name="Guardar" value="Agregar Nuevo Registro" class="border-2 cursor-pointer rounded-lg border-black bg-gradient-to-r from-green-600 to-green-800 p-2 font-bold text-white transition duration-75 hover:bg-gradient-to-r hover:from-green-800 hover:to-green-600 hover:transition hover:duration-75 hover:-translate-y-1 hover:shadow-md hover:shadow-blue-950" onclick="document.location.href='@Url.Content("~/User/Add")'" />
-        </div>
-        <br />
-        <br />
-         
-        <div class="col-lg-12">
-            <table class="table-bordered table">
-                <tr>
-                    <th style="background-color:#0094ff; color: white;">ID</th>
-                    <th style="background-color:#0094ff; color: white;">Correo</th>
-                    <th style="background-color:#0094ff; color: white;">Edad</th>
-                    <th style="background-color:#0094ff; color: white;">Accion A Tomar</th>
-                </tr>
-                @foreach (var Objs in Model)
-                {
-                    <tr>
-                        <td>@Objs._Id</td>
-                        <td>@Objs._Email</td>
-                        <td>@Objs._Edad</td>
-                        <td>
-                            <input type="button" class="btn btn-danger btn-lg"
-                                   onclick="jsDelete(@Objs._Id);"
-                                   value="Borrar" />
-                            <input type="button" class="btn btn-default btn-lg"
-                                   onclick=""
-                                   value="..." />
-                        </td>
-                    </tr>
-                }
+		   } else {
+			alert("El registro no fue borrado :(");
+		   }
 
-            </table>
-        </div>
-    </div>
+		  })
+		 }
+	 }
+   </script>
+  }*@
+
+ @section script{
+  <script>
+  const jsDelete = (id) => {
+       if (confirm("¿Estás seguro de borrar?")) {
+        let url = "@Url.Content("~/User/Delete")/" + id;
+        $.post(url, function (data) {
+         if (data === "1") {
+          document.location.href = "@Url.Content("~/User/Query")";
+         } else {
+          alert("El registro no fue borrado :(");
+         }
+        });
+       }
+   }
+  </script>
+ }
+
 </body>
 </html>
 
-    

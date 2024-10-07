@@ -1,0 +1,47 @@
+﻿
+@model PSS_08_1.Models.ViwModel.EditUserViewModel
+
+@{
+ ViewBag.Title = "Edit";
+ Layout = "~/Views/Shared/_LayoutApp.cshtml";
+}
+
+
+<section class="bg-gradient- flex flex-col items-center justify-center from-gray-400 to-gray-200">
+ <h2 class="border-b-2 border-black text-xl font-bold"> Editar Usuario </h2>
+ <br />
+
+ @using (Html.BeginForm("Edit", "User", FormMethod.Post, new { role = "form", @class = "flex flex-col gap-2 justify-center items-center bg-gradient-to-r from-blue-400 to-blue-600 p-4 rounded-lg w-1/2 border-2 border-black" }))
+ {
+
+  @Html.LabelFor(d => d._Nombre, new { @class = "font-bold" });
+  @Html.TextBoxFor(d => d._Nombre, new { @class = "rounded-lg outline-none text-center p-1" } );
+  @Html.ValidationMessage("_Nombre", new { @class = "text-red-500 " });
+
+  @Html.LabelFor(d => d._Email, new { @class = "font-bold" });
+  @Html.TextBoxFor(d => d._Email, new { @class = "rounded-lg outline-none text-center p-1" });
+  @Html.ValidationMessage("_Email", new { @class = "text-red-500 " });
+
+  @Html.LabelFor(d => d._Edad, new { @class = "font-bold" });
+  @Html.TextBoxFor(d => d._Edad, new { @class = "rounded-lg outline-none text-center p-1" });
+  @Html.ValidationMessage("_Edad", new { @class = "text-red-500 " });
+
+  @Html.LabelFor(d => d._Password, new { @class = "font-bold" });
+  @Html.PasswordFor(d => d._Password, new { @class = "rounded-lg outline-none text-center p-1" });
+  @Html.ValidationMessage("_Password", new { @class = "text-red-500 " });
+
+
+  <div class="flex flex-row gap-4">
+
+   <input type="submit" name="Editar" value="Editar Usuario" class="border-2 cursor-pointer rounded-lg border-black bg-gradient-to-r from-yellow-600 to-yellow-800 p-2 font-bold text-white transition duration-75 hover:bg-gradient-to-r hover:from-yellow-800 hover:to-yellow-600 hover:transition hover:duration-75 hover:-translate-y-1 hover:shadow-md hover:shadow-blue-950" />
+
+   <input type="button" name="Regresar" value="Regresar Atras" class="border-2 cursor-pointer rounded-lg border-black bg-gradient-to-r from-blue-600 to-blue-800 p-2 font-bold text-white transition duration-75 hover:bg-gradient-to-r hover:from-blue-800 hover:to-blue-600 hover:transition hover:duration-75 hover:-translate-y-1 hover:shadow-md hover:shadow-blue-950"
+		  onclick="document.location.href='@Url.Content("~/User/Query")'" />
+
+  </div>
+ }
+
+</section>
+
+
+

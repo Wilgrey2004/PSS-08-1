@@ -62,5 +62,73 @@ namespace PSS_08_1.Controllers
 
 			return Redirect(Url.Content("~/User/Query"));
 		}
+
+		[HttpGet]
+		public ActionResult Edit(int id) {
+			EditUserViewModel model = new EditUserViewModel();
+
+			using (var db = new DBMVCEntities()) {
+
+				var oUser = db.C_User.FirstOrDefault(sf => sf.ID == id);
+
+				model._Edad = oUser.EDAD;
+				model._Nombre = oUser.NOMBRE;
+				model._Email = oUser.EMAIL;
+				model._Password = oUser.PASSWORD;
+				model._IDUser = oUser.ID;
+				return View(model);
+			}
+
+			
+		}
+
+		[HttpPost]
+		public ActionResult Edit(EditUserViewModel model) {
+
+			using (var db = new DBMVCEntities()) {
+				var eUser = db.C_User.FirstOrDefault(sf => sf.ID == model._IDUser);
+
+				if (eUser != null) {
+					eUser.NOMBRE = model._Nombre;
+					eUser.EMAIL = model._Email;
+					eUser.EDAD = model._Edad;
+
+
+					if (model._Password != null || model._Password != "")
+					{
+						eUser.PASSWORD = model._Password;
+					}
+
+					db.Entry(eUser).State = System.Data.Entity.EntityState.Modified;
+
+					db.SaveChanges();
+				}
+				
+
+
+			}
+
+			return Redirect(Url.Content("~/User/Query"));
+		}
+
+		[HttpPost]
+
+		public ActionResult Delete(int id) {
+
+			using (var db = new DBMVCEntities()) {
+				var dUser = db.C_User.Find(id);
+
+				if (dUser != null) {
+					dUser.C_STATUS = 3;
+
+					db.Entry(dUser).State = System.Data.Entity.EntityState.Modified;
+					db.SaveChanges();
+				}
+			
+			}
+
+			return Content("1");
+
+		}
 	}
 }
